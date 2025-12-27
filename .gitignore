@@ -1,0 +1,25 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+.idea/
+# Ignored default folder with query files
+/queries/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# obj
+src/CheckoutPlayground.Api/obj/
+src/CheckoutPlayground.Application/obj/
+src/CheckoutPlayground.Domain/obj/
+src/CheckoutPlayground.Infrastructure/obj/
+#bin 
+src/CheckoutPlayground.Api/bin/
+src/CheckoutPlayground.Application/bin/
+src/CheckoutPlayground.Domain/bin/
+src/CheckoutPlayground.Infrastructure/bin/
