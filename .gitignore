@@ -23,3 +23,5 @@ src/CheckoutPlayground.Api/bin/
 src/CheckoutPlayground.Application/bin/
 src/CheckoutPlayground.Domain/bin/
 src/CheckoutPlayground.Infrastructure/bin/
+#user
+/CheckoutPlayground.sln.DotSettings.user
