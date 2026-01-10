@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutPlayground.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutPlayground.Infrastructure", "src\CheckoutPlayground.Infrastructure\CheckoutPlayground.Infrastructure.csproj", "{BE224A21-B397-4D8A-8DDF-CBDFDABC18C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{7203DC11-F6E5-43CC-9D26-A4F60F8B60F4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D35FD7C0-786B-4C25-831E-5178DD980516}"
 EndProject
 Global
