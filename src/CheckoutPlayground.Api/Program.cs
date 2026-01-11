@@ -1,5 +1,6 @@
 using System.Text;
 using CheckoutPlayground.Application.Abstractions;
+using CheckoutPlayground.Application.Abstractions.Security;
 using CheckoutPlayground.Application.Checkout;
 using CheckoutPlayground.Application.Commands;
 using CheckoutPlayground.Application.Discounts;
@@ -9,9 +10,11 @@ using CheckoutPlayground.Infrastructure.Events;
 using CheckoutPlayground.Infrastructure.Events.Handlers;
 using CheckoutPlayground.Infrastructure.Payments;
 using CheckoutPlayground.Infrastructure.Persistence;
+using CheckoutPlayground.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using Swashbuckle.AspNetCore.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,15 +57,15 @@ builder.Services.AddSingleton<PayOrderHandler>();
 builder.Services.AddSingleton<ICheckoutFacade, CheckoutFacade>();
 
 // Controllers + Swagger
+builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo
+    options.SwaggerDoc("v1", new OpenApiInfo()
         {
             Title = "Checkout Playground API", 
             Version = "v1" 
-            
         }
     );
 
@@ -74,6 +77,16 @@ builder.Services.AddSwaggerGen(options =>
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Description = "Enter: Bearer {your JWT token}"
+    });
+    
+    options.AddSecurityRequirement(document =>
+    {
+        OpenApiSecuritySchemeReference? schemeRef = new("Bearer");
+        OpenApiSecurityRequirement? requirement = new()
+        {
+            [schemeRef] = []
+        };
+        return requirement;
     });
 });
 

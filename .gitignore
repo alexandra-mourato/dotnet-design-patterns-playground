@@ -18,10 +18,13 @@ src/CheckoutPlayground.Api/obj/
 src/CheckoutPlayground.Application/obj/
 src/CheckoutPlayground.Domain/obj/
 src/CheckoutPlayground.Infrastructure/obj/
+test/CheckoutPlayground.Test/obj
 #bin 
 src/CheckoutPlayground.Api/bin/
 src/CheckoutPlayground.Application/bin/
 src/CheckoutPlayground.Domain/bin/
 src/CheckoutPlayground.Infrastructure/bin/
+test/CheckoutPlayground.Test/bin
 #user
 /CheckoutPlayground.sln.DotSettings.user
+

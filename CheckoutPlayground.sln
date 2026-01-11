@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutPlayground.Infrastr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D35FD7C0-786B-4C25-831E-5178DD980516}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutPlayground.Test", "test\CheckoutPlayground.Test\CheckoutPlayground.Test.csproj", "{1ED04647-39E6-4177-BCD0-6E34BD93088C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,5 +40,9 @@ Global
 		{BE224A21-B397-4D8A-8DDF-CBDFDABC18C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE224A21-B397-4D8A-8DDF-CBDFDABC18C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE224A21-B397-4D8A-8DDF-CBDFDABC18C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED04647-39E6-4177-BCD0-6E34BD93088C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED04647-39E6-4177-BCD0-6E34BD93088C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED04647-39E6-4177-BCD0-6E34BD93088C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED04647-39E6-4177-BCD0-6E34BD93088C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using CheckoutPlayground.Application.Abstractions.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -11,11 +12,12 @@ namespace CheckoutPlayground.Api.Controllers;
 [Route("api/auth")]
 public sealed class AuthController : ControllerBase
 {
-    private readonly IConfiguration _configuration;
+    
+    private readonly IJwtTokenService _jwt;
 
-    public AuthController(IConfiguration configuration)
+    public AuthController(IJwtTokenService jwt)
     {
-        _configuration = configuration;
+        _jwt = jwt;
     }
 
     [HttpPost("token")]
@@ -26,38 +28,14 @@ public sealed class AuthController : ControllerBase
         if (req.Username != "admin" || req.Password != "admin")
             return Unauthorized();
 
-        var jwtSection = _configuration.GetSection("Jwt");
-        var jwtKey = jwtSection["Key"]!;
-        var jwtIssuer = jwtSection["Issuer"]!;
-        var jwtAudience = jwtSection["Audience"]!;
-
-        var claims = new[]
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, req.Username),
-            new Claim(ClaimTypes.Name, req.Username),
-            new Claim(ClaimTypes.Role, "Admin"),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
-
-        var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
-        var creds = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            issuer: jwtIssuer,
-            audience: jwtAudience,
-            claims: claims,
-            expires: DateTime.UtcNow.AddHours(1),
-            signingCredentials: creds
-        );
-
-        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-
+        var token = _jwt.GenerateToken(req.Username, "Admin");
+        
         return Ok(new
         {
-            access_token = tokenString,
+            access_token = token,
             token_type = "Bearer"
-        });
+        }); 
     }
+    
+    public sealed record LoginRequest(string Username, string Password);
 }
-
-public sealed record LoginRequest(string Username, string Password);
