@@ -1,10 +1,6 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using CheckoutPlayground.Application.Abstractions.Security;
+﻿using CheckoutPlayground.Application.Abstractions.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace CheckoutPlayground.Api.Controllers;
 

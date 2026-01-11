@@ -3,6 +3,8 @@ using CheckoutPlayground.Domain.Orders;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+namespace CheckoutPlayground.Api.Controllers;
+
 [ApiController]
 [Route("api/orders")]
 [Authorize]
